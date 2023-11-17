@@ -1,31 +1,26 @@
-import projects from "./newProject"
-import toDo from "./newToDo"
-import { content } from "."
-const addProject = document.querySelector(".addProject")
-const projectName = document.querySelector(".projectName")
-addProject.addEventListener(`click`, () =>{
-    const projectDiv = document.createElement("div")
-    projectDiv.classList.add("projectDiv")
-    projectDiv.setAttribute("index",`${projects.length - 1}`)
-    projectDiv.setAttribute(`title`,`${projectName.value}`)
-    projectDiv.style.width = `100px`
-    projectDiv.style.height = `100px`
-    projectDiv.style.border = `solid black 1px`
-    projects.push([])
-    content.appendChild(projectDiv)
+import toDo from "./newToDo";
+import projects from "./newProject";
+const createBtn = document.querySelector(`.createToDo`)
+const title = document.querySelector(`.title`)
+const description = document.querySelector(`.description`)
+const date = document.querySelector(`.date`)
+createBtn.addEventListener(`click`, () =>{
+    projects[0].push(new toDo(title.value, description.value, "", date.value))
     console.log(projects)
+    loadToDos()
 })
-const addToDo = document.querySelector(".addToDo")
-addToDo.addEventListener(`click`, () => {
-    const projectDiv = document.querySelector("#content div")
-    projects[projectDiv.getAttribute(`index`)].push(toDo(projectName.value,"description","dueDate","priority","notes","checkList"))
-    const allProjectDivs = document.querySelectorAll(".projectDiv")
-    allProjectDivs.forEach((project,) => {
-        console.log(projectDiv.getAttribute(`index`))
-    project.addEventListener(`click`,() =>{
-        const projectDiv = document.querySelector("#content div")
-        console.log(projectDiv.getAttribute(`index`))
-    })
-})
-})
-export {addProject}
+function loadToDos(){
+    const content = document.querySelector(`#content`)
+    const toDoContainer = document.createElement(`div`)
+    const newTitle = document.createElement(`h3`)
+    const newDescription = document.createElement(`p`)
+    const newDate = document.createElement(`div`)
+    newDescription.textContent = projects[0][0].description
+    newTitle.textContent = projects[0][0].title
+    newDate.textContent = projects[0][0].dueDate
+    toDoContainer.appendChild(newTitle)
+    toDoContainer.appendChild(newDescription)
+    toDoContainer.appendChild(newDate)
+    content.appendChild(toDoContainer)
+}
+export {createBtn, loadToDos}
