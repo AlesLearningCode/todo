@@ -1,37 +1,25 @@
 import toDo from "./newToDo";
 import projects from "./newProject";
 import { get } from "lodash";
+import searchIndex from "./searchIndex";
+import loadToDos from "./loadToDo";
 const createBtn = document.querySelector(`.createToDo`)
 const title = document.querySelector(`.title`)
 const description = document.querySelector(`.description`)
 const date = document.querySelector(`.date`)
 createBtn.addEventListener(`click`, () =>{
-    projects[projects.length - 1].push(new toDo(title.value, description.value, "", date.value))
-    console.log(projects)
+    projects[searchIndex(`.projectInput`)].push(new toDo(title.value, description.value, 0, date.value))
     loadToDos()
 })
-function loadToDos(){
-    const toDoContainer = document.createElement(`div`)
-    const newTitle = document.createElement(`h3`)
-    const newDescription = document.createElement(`p`)
-    const newDate = document.createElement(`div`)
-    for(let i = 0; i < projects[0].length; i++){
-    newDescription.textContent = projects[0][i].description
-    newTitle.textContent = projects[0][i].title
-    newDate.textContent = projects[0][i].dueDate
-    toDoContainer.appendChild(newTitle)
-    toDoContainer.appendChild(newDescription)
-    toDoContainer.appendChild(newDate)
-    content.appendChild(toDoContainer)
-    }
-}
 const projectList = document.createElement(`datalist`)
 const projectInput = document.createElement(`input`)
+projectInput.value = "default project"
 const content = document.querySelector(`#content`)
 projectInput.setAttribute(`list`,`projectList`)
 projectInput.classList.add(`projectInput`)
 projectList.setAttribute(`id`,`projectList`)
 const defaultProject = document.createElement(`option`)
+defaultProject.setAttribute(`index`,`0`)
 defaultProject.value = "default project"
 projectList.appendChild(defaultProject)
 document.body.appendChild(projectInput)
@@ -62,13 +50,6 @@ viewProjects.addEventListener(`click`, () => {
 const editProject = document.querySelector(`.editProject`)
 editProject.addEventListener(`click`, () =>{
     content.innerHTML = ""
-    const listOption = document.querySelector(`.projectInput`)
-    const listOptions = document.querySelectorAll(`option`)
-    const index = listOptions.forEach(element => {
-        if(element.getAttribute(`value`) == listOption.value){
-            return element.getAttribute(`index`)
-        }
-    });
-    console.log(index)
+    loadToDos()
 })
-export {createBtn, loadToDos}
+export {createBtn}
