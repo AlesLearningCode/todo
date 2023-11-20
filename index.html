@@ -8,19 +8,30 @@
     <title>Document</title>
 </head>
 <body>
-    <label for="title">Title: </label>
-    <input type="text" class="title" id="title">
-    <label for="description">Description: </label>
-    <input type="text" class="description" id="description">
-    <label for="date">Date: </label>
-    <input type="date" class="date" id="date">
+    <header><h1>To Do by Ales</h1></header>
+    <form action="#" class="to-do">
+    <div>
+        <label for="title">Title: </label>
+        <input type="text" class="title" id="title">
+    </div>
+    <div>
+        <label for="description">Description: </label>
+        <input type="text" class="description" id="description">
+    </div>
+    <div>
+        <label for="date">Date: </label>
+        <input type="date" class="date" id="date">
+    </div>
     <button class="createToDo">Create ToDo</button>
+    </form>
+    <form action="#">
     <label for="projectName">Project Name:</label>
     <input type="text" id="projectName" class="projectName">
     <button class="newProject">+</button>
     <button class="deleteProject">Delete project</button>
     <button class="allProjects">View all projects</button>
     <button class="editProject">Edit project</button>
+    </form>
     <div id="content"></div>
 </body>
 </html>
