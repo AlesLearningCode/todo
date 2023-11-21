@@ -1,3 +1,4 @@
+import loadToDos from "./loadToDo"
 import projects from "./newProject"
 import render from "./render"
 import searchIndex from "./searchIndex"
@@ -11,9 +12,8 @@ dltProjectBtn.addEventListener(`click`,() =>{
         if(element.getAttribute(`value`) == listOption.value){
             projectList.removeChild(element)
             listOption.value = "default project"
-            render()
+            loadToDos(searchIndex(`.projectInput`))
         }
     });
-    console.log(searchIndex(`.projectInput`))
 })
 export default dltProjectBtn

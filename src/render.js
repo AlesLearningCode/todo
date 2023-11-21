@@ -1,10 +1,10 @@
 import projects from "./newProject"
 import searchIndex from "./searchIndex"
 import toDo from "./newToDo"
-function render(){
+function render(value){
     const content = document.querySelector(`#content`)
     content.innerHTML = ""
-    for(let i = 0; i < projects[searchIndex(`.projectInput`)].length; i++){
+    for(let i = 0; i < projects[value].length; i++){
     const toDoContainer = document.createElement(`div`)
     toDoContainer.classList.add(`container`)
     const newTitle = document.createElement(`h3`)
@@ -16,7 +16,7 @@ function render(){
     checkList.style.appearance = "none"
     checkList.style.borderRadius = `10px`
     checkList.setAttribute(`type`,`range`)
-    if(projects[searchIndex(`.projectInput`)][i].checklist == 0){
+    if(projects[value][i].checklist == 0){
         checkList.value = 0
     }else{
         checkList.value = 1
@@ -30,9 +30,9 @@ function render(){
     dltBtn.setAttribute(`index`,`${i}`)
     checkList.setAttribute(`index`,`${i}`)
     dltBtn.classList.add(`dltBtn`)
-    newDescription.textContent = projects[searchIndex(`.projectInput`)][i].description
-    newTitle.textContent = projects[searchIndex(`.projectInput`)][i].title
-    newDate.textContent = projects[searchIndex(`.projectInput`)][i].dueDate
+    newDescription.textContent = projects[value][i].description
+    newTitle.textContent = projects[value][i].title
+    newDate.textContent = projects[value][i].dueDate
     toDoContainer.appendChild(newTitle)
     toDoContainer.appendChild(newDescription)
     toDoContainer.appendChild(newDate)
@@ -40,7 +40,6 @@ function render(){
     toDoContainer.appendChild(dltBtn)
     content.appendChild(toDoContainer)
     checkList.addEventListener(`click`, () =>{
-        console.log(searchIndex(`.projectInput`))
         if(checkList.value == 0){
             checkList.value = 1
             checkList.style.backgroundColor = "green"

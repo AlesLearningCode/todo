@@ -3,4 +3,5 @@ import projects from "./newProject";
 import {createBtn} from "./DOM";
 import loadToDos from "./loadToDo";
 import dltProjectBtn from "./deleteProject";
+import searchIndex from "./searchIndex";
 loadToDos()

@@ -1,5 +1,5 @@
-function searchIndex(value){
-const listOption = document.querySelector(value)
+function searchIndex(element){
+const listOption = document.querySelector(element)
     const listOptions = document.querySelectorAll(`option`)
     let index
     listOptions.forEach(element => {
