@@ -1,6 +1,6 @@
 import render from "./render"
 import projects from "./newProject"
-import searchIndex from "./searchIndex"
+import searchIndex from "./searchProjectIndex"
 function loadToDos(value){
     render(value)
         const allDltBtns = document.querySelectorAll(`.dltBtn `)

@@ -1,7 +1,7 @@
 import toDo from "./newToDo";
 import projects from "./newProject";
 import { get } from "lodash";
-import searchIndex from "./searchIndex";
+import searchIndex from "./searchProjectIndex";
 import loadToDos from "./loadToDo";
 import dialog    from "./modal";
 const createBtn = document.querySelector(`.createToDo`)
@@ -75,13 +75,5 @@ viewProjects.addEventListener(`click`, () => {
 });
         console.log(projectDashboards)
     }   
-})
-const editProject = document.createElement("button")
-editProject.classList.add("editProjects")
-editProject.textContent = "Edit project"
-document.body.appendChild(editProject)
-editProject.addEventListener(`click`, () =>{
-    content.innerHTML = ""
-    loadToDos(searchIndex(`.projectInput`))
-})
+}) 
 export {createBtn}

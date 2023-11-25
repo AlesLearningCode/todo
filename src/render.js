@@ -1,14 +1,19 @@
 import projects from "./newProject"
-import searchIndex from "./searchIndex"
+import searchIndex from "./searchProjectIndex"
 import toDo from "./newToDo"
+import editToDo from "./editToDo"
 function render(value){
     const content = document.querySelector(`#content`)
+    const projectList = document.querySelector(`.projectInput`) 
+    projectList.setAttribute(`type`,`hidden`)
     content.innerHTML = ""
     for(let i = 0; i < projects[value].length; i++){
     const toDoContainer = document.createElement(`div`)
     toDoContainer.classList.add(`container`)
     const newTitle = document.createElement(`h3`)
+    newTitle.setAttribute(`index`,`${i}`)
     const newDescription = document.createElement(`p`)
+    newDescription.setAttribute(`index`,`${i}`)
     const newDate = document.createElement(`div`)
     const checkList = document.createElement(`input`)
     checkList.classList.add(`checkList`)
@@ -25,18 +30,20 @@ function render(value){
     checkList.setAttribute(`max`,`1`)
     checkList.setAttribute(`min`,`0`)
     checkList.style.width = `40px`
+    checkList.style.justifySelf = `right`
     const dltBtn = document.createElement(`button`)
     dltBtn.textContent = "delete"
     dltBtn.setAttribute(`index`,`${i}`)
     checkList.setAttribute(`index`,`${i}`)
     dltBtn.classList.add(`dltBtn`)
+    dltBtn.style.marginTop = `10px`
     newDescription.textContent = projects[value][i].description
     newTitle.textContent = projects[value][i].title
     newDate.textContent = projects[value][i].dueDate
+    toDoContainer.appendChild(checkList)
     toDoContainer.appendChild(newTitle)
     toDoContainer.appendChild(newDescription)
     toDoContainer.appendChild(newDate)
-    toDoContainer.appendChild(checkList)
     toDoContainer.appendChild(dltBtn)
     content.appendChild(toDoContainer)
     checkList.addEventListener(`click`, () =>{
@@ -51,5 +58,9 @@ function render(value){
         }
     })
     }
+    const containerHeader = document.querySelectorAll(`.container h3`)
+    const containerDescription = document.querySelectorAll(`.container p`)
+    editToDo(containerHeader,`title`,`input`)
+    editToDo(containerDescription,`description`,`textarea`)
 }
 export default render
