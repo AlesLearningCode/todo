@@ -7,6 +7,7 @@ function editToDo(value,property,inputType){
             input.classList.add(`toDoEdit`)
             input.style.padding = `5px`
             input.style.borderRadius = `10px`
+            input.style.justifySelf = `start`
             input.value = element.textContent
             element.removeEventListener(`click`, edit)
             const index = element.getAttribute(`index`)

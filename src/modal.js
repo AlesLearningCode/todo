@@ -18,7 +18,7 @@ const toDoCloseButton = document.querySelector(".toDoDialog .closeButton")
 // "Show the dialog" button opens the dialog modally
 addProject.addEventListener("click", () => {
   projectDialog.showModal();
-});
+ });
 
 // "Close" button closes the dialog
 projectCloseButton.addEventListener("click", () => {

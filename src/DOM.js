@@ -14,14 +14,15 @@ createBtn.addEventListener(`click`, () =>{
 })
 const projectList = document.createElement(`datalist`)
 const projectInput = document.createElement(`input`)
-projectInput.value = "default project"
+const currentDate = new Date()
+projectInput.value = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`
 const content = document.querySelector(`#content`)
 projectInput.setAttribute(`list`,`projectList`)
 projectInput.classList.add(`projectInput`)
 projectList.setAttribute(`id`,`projectList`)
 const defaultProject = document.createElement(`option`)
 defaultProject.setAttribute(`index`,`0`)
-defaultProject.value = "default project"
+defaultProject.value = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`
 projectList.appendChild(defaultProject)
 document.body.appendChild(projectInput)
 document.body.appendChild(projectList)
@@ -57,10 +58,10 @@ viewProjects.addEventListener(`click`, () => {
         projectDashboard.style.padding = `10px`
         projectDashboard.style.backgroundImage = `linear-gradient(
             45deg,
-            #F3EEEA,
-            #EBE3D5,
-            #B0A695,
-            #776B5D
+            #C5FFF8,
+            #C5FFF8,
+            #96EFFF,
+        #5FBDFF
           )`
         projectDashboard.style.marginTop = `20px`
         projectDashboard.style.border = `2px black solid`

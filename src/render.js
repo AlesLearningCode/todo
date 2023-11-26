@@ -2,9 +2,12 @@ import projects from "./newProject"
 import searchIndex from "./searchProjectIndex"
 import toDo from "./newToDo"
 import editToDo from "./editToDo"
+const currentProject = document.createElement(`h1`)
 function render(value){
     const content = document.querySelector(`#content`)
     const projectList = document.querySelector(`.projectInput`) 
+    currentProject.textContent = projectList.value
+    document.body.appendChild(currentProject)
     projectList.setAttribute(`type`,`hidden`)
     content.innerHTML = ""
     for(let i = 0; i < projects[value].length; i++){
@@ -15,6 +18,7 @@ function render(value){
     const newDescription = document.createElement(`p`)
     newDescription.setAttribute(`index`,`${i}`)
     const newDate = document.createElement(`div`)
+    newDate.style.justifySelf = `end`
     const checkList = document.createElement(`input`)
     checkList.classList.add(`checkList`)
     checkList.style.backgroundColor = `red`
