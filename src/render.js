@@ -2,21 +2,42 @@ import projects from "./newProject"
 import searchIndex from "./searchProjectIndex"
 import toDo from "./newToDo"
 import editToDo from "./editToDo"
-const currentProject = document.createElement(`h1`)
 function render(value){
     const content = document.querySelector(`#content`)
+    content.style.display = `grid`
+    content.style.justifySelf = `center`
+    content.style.alignSelf = `center`
+    content.style.justifyItems = `center`
+    content.style.width = `800px`
+    content.style.height = `700px`
+    content.style.marginLeft = `200px`
+    content.style.boxShadow = `#5FBDFF 0px 0px 20px`
+    content.style.gridTemplateRows = `100px 1fr`
+    content.style.gridTemplateColumns = `1fr`
+    content.style.gap = `20px`
+    content.style.gridRow = `1/5`
+    content.style.gridColumn = `1/5`
+    content.style.overflowY = `auto`
+    content.style.flexWrap = `wrap`
     const projectList = document.querySelector(`.projectInput`) 
-    currentProject.textContent = projectList.value
-    document.body.appendChild(currentProject)
     projectList.setAttribute(`type`,`hidden`)
     content.innerHTML = ""
+    const currentProject = document.createElement(`h1`)
+    content.appendChild(currentProject)
+    const flexContainer = document.createElement(`div`)
+    flexContainer.classList.add(`flexContainer`)
+    currentProject.textContent = projectList.value.replace(`#`,``)
+    if(value == undefined){
+        value = 0
+    }
     for(let i = 0; i < projects[value].length; i++){
     const toDoContainer = document.createElement(`div`)
+    const titleDiv = document.createElement(`div`)
+    titleDiv.style.display = `flex`
+    titleDiv.style.justifyContent = `space-between`
     toDoContainer.classList.add(`container`)
     const newTitle = document.createElement(`h3`)
     newTitle.setAttribute(`index`,`${i}`)
-    const newDescription = document.createElement(`p`)
-    newDescription.setAttribute(`index`,`${i}`)
     const newDate = document.createElement(`div`)
     newDate.style.justifySelf = `end`
     const checkList = document.createElement(`input`)
@@ -24,6 +45,7 @@ function render(value){
     checkList.style.backgroundColor = `red`
     checkList.style.appearance = "none"
     checkList.style.borderRadius = `10px`
+    checkList.style.height = `15px`
     checkList.setAttribute(`type`,`range`)
     if(projects[value][i].checklist == 0){
         checkList.value = 0
@@ -33,23 +55,36 @@ function render(value){
     }
     checkList.setAttribute(`max`,`1`)
     checkList.setAttribute(`min`,`0`)
-    checkList.style.width = `40px`
+    checkList.style.width = `30px`
     checkList.style.justifySelf = `right`
-    const dltBtn = document.createElement(`button`)
-    dltBtn.textContent = "delete"
+    const dltBtn = document.createElement(`img`)
+    dltBtn.src = `./close-circle.svg`
+    dltBtn.alt = `remove`
+    dltBtn.textContent = "remove"
     dltBtn.setAttribute(`index`,`${i}`)
     checkList.setAttribute(`index`,`${i}`)
     dltBtn.classList.add(`dltBtn`)
-    dltBtn.style.marginTop = `10px`
+    dltBtn.style.width = `15px`
+    dltBtn.style.height = `auto`
+    dltBtn.style.borderRadius = `10px`
+    dltBtn.style.justifySelf = `flex-start`
+    dltBtn.style.gridRow = `1/2`
+    if(projects[value][i].description != ``){
+    const newDescription = document.createElement(`p`)
+    newDescription.setAttribute(`index`,`${i}`)
     newDescription.textContent = projects[value][i].description
+    toDoContainer.appendChild(newDescription)
+    newDescription.style.gridRow = `4/5`
+    }
     newTitle.textContent = projects[value][i].title
     newDate.textContent = projects[value][i].dueDate
-    toDoContainer.appendChild(checkList)
-    toDoContainer.appendChild(newTitle)
-    toDoContainer.appendChild(newDescription)
+    titleDiv.appendChild(newTitle)
+    titleDiv.appendChild(checkList)
+    toDoContainer.appendChild(titleDiv)
     toDoContainer.appendChild(newDate)
     toDoContainer.appendChild(dltBtn)
-    content.appendChild(toDoContainer)
+    flexContainer.appendChild(toDoContainer)
+    content.appendChild(flexContainer)
     checkList.addEventListener(`click`, () =>{
         if(checkList.value == 0){
             checkList.value = 1

@@ -1,7 +1,11 @@
 import render from "./render"
 import projects from "./newProject"
+import loadModal from "./modal"
 import searchIndex from "./searchProjectIndex"
+import showProjects from "./viewProjects"
 function loadToDos(value){
+    showProjects()
+    loadModal()
     render(value)
         const allDltBtns = document.querySelectorAll(`.dltBtn `)
         allDltBtns.forEach(element => {

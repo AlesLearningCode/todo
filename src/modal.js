@@ -1,13 +1,14 @@
 import toDo from "./newToDo"
-
-const newProject = document.createElement(`button`)
-const newToDo = document.createElement(`button`)
+function loadModal(){
+const newProject = document.createElement(`img`)
+newProject.style.height = `20px`
+newProject.style.width = `20px`
+newProject.src = `./plus-thick.svg`
+const newToDo = document.querySelector(`img`)
+newToDo.src = `./plus-box.svg`
+const sidebarProjects = document.querySelector(`.projects`)
 newProject.classList.add(`showDialog`)
-newToDo.classList.add(`newToDo`)
-newToDo.textContent = "Add to do"
-newProject.textContent = "Add Project"
-document.body.appendChild(newProject)
-document.body.appendChild(newToDo)
+sidebarProjects.appendChild(newProject)
 const projectDialog = document.querySelector(".projectDialog");
 const toDoDialog = document.querySelector(".toDoDialog")
 const addToDo = document.querySelector(".newToDo")
@@ -33,5 +34,5 @@ addToDo.addEventListener("click", () => {
 toDoCloseButton.addEventListener("click", () => {
   toDoDialog.close();
 });
-
-export default projectDialog
+}
+export default loadModal
