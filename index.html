@@ -8,7 +8,14 @@
     <title>Document</title>
 </head>
 <body>
-    <header><h1>To Do by Ales</h1></header>
+    <div class="sidebar">
+        <div class="newToDo"><img src="plus-box.svg" alt="Add project"><div>Nový úkol</div></div>
+        <div class="calendar"><img src="./calendar-blank.svg" alt="Calendar"><div>Calendar</div></div>
+        <div class="sidebar-two">
+            <div>Projects</div>
+            <div class="projects"></div>
+        </div>
+    </div>
     <dialog class="toDoDialog">
     <form action="#" class="to-do" class="">
     <h2>Add ToDo</h2>
@@ -31,7 +38,7 @@
     <dialog class="projectDialog">
     <form action="#">
     <label for="projectName">Project Name:</label>
-    <input type="date" id="projectName" class="projectName">
+    <input type="text" id="projectName" class="projectName">
     <button class="newProject">Add Project</button>
     <button class="deleteProject">Delete project</button>
     <button class="closeButton">Close</button>
