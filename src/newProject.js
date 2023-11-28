@@ -1,5 +1,5 @@
 import toDo from "./newToDo";
-const projects = [
+let projects = [
     []
 ]
 export default projects

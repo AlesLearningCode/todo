@@ -5,15 +5,17 @@ import loadToDos from "./loadToDo";
 import loadModal from "./modal";
 import showProjects from "./viewProjects";
 import render from "./render";
+import saveInMemory from "./saveInMemory";
 const createBtn = document.querySelector(`.createToDo`)
 const title = document.querySelector(`.title`)
 const description = document.querySelector(`.description`)
 const date = document.querySelector(`.date`)
 createBtn.addEventListener(`click`, () =>{
-    const projectInput = document.querySelector(`.projectInput`)
     projects[searchIndex(`.projectInput`)].push(new toDo(title.value, description.value, 0, date.value))
     loadToDos(searchIndex(`.projectInput`))
-    console.log(projectInput)
+    localStorage.setItem("projects", JSON.stringify(projects));
+    JSON.parse(localStorage.getItem("projects"))
+    console.log(projects[1])
 })
 const projectList = document.createElement(`datalist`)
 const projectInput = document.createElement(`input`)

@@ -3,7 +3,10 @@ import projects from "./newProject"
 import loadModal from "./modal"
 import searchIndex from "./searchProjectIndex"
 import showProjects from "./viewProjects"
+import toDo from "./newToDo"
+import saveInMemory from "./saveInMemory"
 function loadToDos(value){
+    JSON.parse(localStorage.getItem("projects"))
     showProjects()
     loadModal()
     render(value)
@@ -13,12 +16,10 @@ function loadToDos(value){
             let index = element.getAttribute(`index`)
             content.innerHTML = ""
             element.parentElement.remove()
-            console.log(index)
             projects[searchIndex(`.projectInput`)].splice(index,1)
             render(value)
             loadToDos(searchIndex(`.projectInput`))
         })
         });
-        console.log(projects)
     }
 export default loadToDos
