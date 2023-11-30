@@ -14,13 +14,10 @@ createBtn.addEventListener(`click`, () =>{
     projects[searchIndex(`.projectInput`)].push(new toDo(title.value, description.value, 0, date.value))
     loadToDos(searchIndex(`.projectInput`))
     localStorage.setItem("projects", JSON.stringify(projects));
-    JSON.parse(localStorage.getItem("projects"))
-    console.log(projects[1])
 })
 const projectList = document.createElement(`datalist`)
 const projectInput = document.createElement(`input`)
 projectInput.value = `Default`
-const content = document.querySelector(`#content`)
 projectInput.setAttribute(`list`,`projectList`)
 projectInput.classList.add(`projectInput`)
 projectList.setAttribute(`id`,`projectList`)
@@ -45,5 +42,6 @@ createProject.addEventListener(`click`, () => {
     dialog.close();
     showProjects()
     loadModal()
+    localStorage.setItem("projects", JSON.stringify(projects));
 })
 export {createBtn}

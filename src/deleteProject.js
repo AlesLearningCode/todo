@@ -11,8 +11,16 @@ dltProjectBtn.addEventListener(`click`,() =>{
         const projectList = document.querySelector(`#projectList`)
         if(element.getAttribute(`value`) == listOption.value){
             projectList.removeChild(element)
-            listOption.value = "default project"
+            const allOptions = document.querySelectorAll(`option`)
+            console.log(allOptions)
+            let saveInMemory = []
+            allOptions.forEach((element,index) => {
+            saveInMemory[index] = element.getAttribute(`value`)
+            });
+            localStorage.setItem("listOption",JSON.stringify(saveInMemory))
+            listOption.value = "Default"
             loadToDos(searchIndex(`.projectInput`))
+            localStorage.setItem("projects", JSON.stringify(projects));
         }
     });
 })
