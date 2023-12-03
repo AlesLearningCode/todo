@@ -19,6 +19,7 @@ function loadToDos(value){
             projects[searchIndex(`.projectInput`)].splice(index,1)
             render(value)
             loadToDos(searchIndex(`.projectInput`))
+            localStorage.setItem("projects", JSON.stringify(projects));
         })
         });
     }

@@ -2,6 +2,7 @@ import loadToDos from "./loadToDo"
 import projects from "./newProject"
 import render from "./render"
 import searchIndex from "./searchProjectIndex"
+function dltProject(){
 const dltProjectBtn = document.querySelector(`.deleteProject`)
 dltProjectBtn.addEventListener(`click`,() =>{
     projects.splice(searchIndex(`.projectInput`),1)
@@ -24,4 +25,5 @@ dltProjectBtn.addEventListener(`click`,() =>{
         }
     });
 })
-export default dltProjectBtn
+}
+export default dltProject

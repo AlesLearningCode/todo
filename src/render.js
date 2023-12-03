@@ -2,6 +2,7 @@ import projects from "./newProject"
 import searchIndex from "./searchProjectIndex"
 import toDo from "./newToDo"
 import editToDo from "./editToDo"
+import dltProject from "./deleteProject"
 function render(value){
     const content = document.querySelector(`#content`)
     content.style.display = `grid`
@@ -13,7 +14,7 @@ function render(value){
     content.style.marginLeft = `200px`
     content.style.boxShadow = `#5FBDFF 0px 0px 20px`
     content.style.gridTemplateRows = `100px 1fr`
-    content.style.gridTemplateColumns = `1fr`
+    content.style.gridTemplateColumns = `1fr 50px`
     content.style.gap = `20px`
     content.style.gridRow = `1/5`
     content.style.gridColumn = `1/5`
@@ -22,6 +23,14 @@ function render(value){
     const projectList = document.querySelector(`.projectInput`) 
     projectList.setAttribute(`type`,`hidden`)
     content.innerHTML = ""
+    const dltProjectBtn = document.createElement(`button`)
+    dltProjectBtn.textContent = `Delete Project`
+    dltProjectBtn.style.width = `80px`
+    dltProjectBtn.style.height = `40px`
+    dltProjectBtn.style.margin = `20px 100px 0 0`
+    dltProjectBtn.classList.add(`deleteProject`)
+    content.appendChild(dltProjectBtn)
+    dltProject()
     const currentProject = document.createElement(`h1`)
     content.appendChild(currentProject)
     const flexContainer = document.createElement(`div`)
